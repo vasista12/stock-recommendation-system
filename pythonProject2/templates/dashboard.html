@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-container h1 {
+            color: #333;
+        }
+        .headlines, .recommended-sector {
+            margin-bottom: 20px;
+        }
+        .headlines h2, .recommended-sector h2 {
+            color: #555;
+        }
+        .headlines ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .headlines li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 4px solid #28a745;
+        }
+        .headlines a {
+            text-decoration: none;
+            color: #333;
+        }
+        .headlines a:hover {
+            color: #28a745;
+        }
+        .recommended-sector p {
+            font-size: 18px;
+            color: #28a745;
+        }
+        .logout-button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="headlines">
+            <h2>Latest Headlines</h2>
+            <ul>
+                {% for headline in headlines %}
+                    <li>
+                        <a href="{{ headline.url }}" target="_blank">{{ headline.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="recommended-sector">
+            <h2>Recommended Sector</h2>
+            <p>{{ recommended_sector }}</p>
+        </div>
+        <button class="logout-button" onclick="window.location.href='/logout'">Logout</button>
+    </div>
+</body>
+</html>
